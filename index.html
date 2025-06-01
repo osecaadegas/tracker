@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bonus Hunt Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    /* Modern & Simple Restyle for Bonus Hunt Tracker */
+    /* filepath: d:\Website\New folder\BonusHuntV1.html */
+
+    /* General Modern Look */
+    body {
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #181830 0%, #23235b 100%);
+      color: #e0e6f6;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1800px;
+      width: 95vw;
+      margin: 32px auto 0 auto;
+      padding: 32px 32px 32px 32px;
+      background: rgba(30, 30, 60, 0.92);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    }
+
+    h1, h3 {
+      color: #a259ff;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    }
+
+    label, input, button {
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    }
+
+    label {
+      color: #7f7fff;
+      margin-right: 12px;
+      display: inline-block;
+      text-align: center;
+      min-width: 110px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 6px 4px;
+      background: #23235b;
+      color: #e0e6f6;
+      border: 1px solid #a259ff;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+      font-size: 1em;
+      display: inline-block;
+      text-align: center;
+    }
+
+    input[type="text"], input[type="url"], input[type="number"] {
+      text-align: center;
+    }
+
+    button {
+      background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
+      color: #23235b;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #a259ff 0%, #5ce1e6 100%);
+      color: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      background: rgba(35, 35, 91, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px #a259ff33;
+      font-size: 0.95em;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    th, td {
+      padding: 6px 4px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
+      color: #23235b;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #a259ff;
+      font-size: 1em;
+    }
+
+    td input[type="number"] {
+      width: 54px;
+      padding: 3px 4px;
+      font-size: 0.95em;
+    }
+
+    table td img {
+      width: 38px;
+      height: 26px;
+      object-fit: contain;
+      border-radius: 5px;
+      border: 1px solid #a259ff;
+      background: #181830;
+      box-shadow: 0 1px 4px #5ce1e633;
+      margin: 0 auto;
+      display: block;
+      padding: 1px;
+    }
+
+    /* Slot Display Modernization */
+    .slot-display {
+      flex: 0 0 auto;
+      min-width: 900px;
+      max-width: 900px;
+      text-align: center;
+      margin-top: 0;
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      justify-content: center;
+    }
+
+    .slot-stack-container {
+      width: 1200px;
+      height: 700px;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      box-shadow: none;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .swipe-track {
+      display: flex;
+      transition: transform 1.5s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
+      height: 680px;
+      align-items: center;
+    }
+
+    .slot-stack-slide {
+      width: 1200px;
+      height: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      position: relative;
+      background: #23235b;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px #5ce1e655, 0 0 0 4px #5ce1e6;
+      border: 2.5px solid #a259ff;
+      transition: opacity 0.7s;
+      opacity: 1;
+    }
+
+    /* Modern, minimal, and aligned info boxes */
+    .slot-corner-label {
+      position: absolute;
+      background: rgba(92, 225, 230, 0.92);
+      color: #23235b;
+      font-weight: 600;
+      font-size: 1em;
+      padding: 4px 16px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px #5ce1e655;
+      z-index: 3;
+      pointer-events: none;
+      text-shadow: 0 1px 6px #fff4;
+      border: none;
+      letter-spacing: 0.5px;
+      opacity: 0.96;
+      backdrop-filter: blur(2px);
+      transition: background 0.2s;
+    }
+
+    .slot-corner-label.bet    { top: 12px; left: 12px; background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);}
+    .slot-corner-label.payout { top: 12px; right: 12px; background: linear-gradient(90deg, #a259ffcc 0%, #5ce1e6cc 100%);}
+    .slot-corner-label.xwin   { bottom: 12px; right: 12px; background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);}
+
+    /* Stats Panel - Different font and color for clarity */
+    #stats {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #fff 0%, #e0e6f6 100%);
+      border-radius: 14px;
+      padding: 22px 28px;
+      box-shadow: 0 2px 16px #5ce1e622;
+      color: #23235b;
+      font-size: 1.13em;
+      min-width: 340px;
+      max-width: 480px;
+      flex: 0 0 340px;
+      min-height: 260px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      letter-spacing: 0.1px;
+    }
+
+    #stats strong {
+      color: #a259ff;
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.08em;
+    }
+
+    #stats span {
+      font-weight: bold;
+      color: #5ce1e6;
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    }
+
+    #stats p {
+      margin: 10px 0 8px 0;
+      font-size: 1.04em;
+      line-height: 1.5;
+    }
+
+    #stats .profit {
+      color: #1bbf7a;
+      font-weight: bold;
+      font-size: 1.08em;
+    }
+
+    #stats .loss {
+      color: #ff4e91;
+      font-weight: bold;
+      font-size: 1.08em;
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 900px) {
+      .stats-and-display {
+        flex-direction: column;
+        gap: 18px;
+        align-items: stretch;
+      }
+      .slot-display, #stats {
+        min-width: 0;
+        max-width: 100%;
+      }
+      .slot-stack-container {
+        min-height: 220px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 10px 2vw;
+      }
+      .slot-info {
+        padding: 10px 6vw;
+      }
+      #stats {
+        padding: 10px 4vw;
+      }
+      th, td {
+        padding: 8px 2px;
+      }
+    }
+
+    .stats-and-display {
+      display: flex;
+      flex-direction: row;
+      gap: 48px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-top: 36px;
+      width: 100%;
+    }
+
+    #stats {
+      min-width: 340px;
+      max-width: 480px;
+      flex: 0 0 340px;
+    }
+
+    .slot-management-panel {
+      flex: 1 1 0;
+      min-width: 400px;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .add-slot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .add-slot-grid input,
+    .add-slot-grid label,
+    .add-slot-grid button {
+      margin: 0;
+    }
+
+    .slideshow {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 700px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    #obsModeBtn {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 9999;
+      background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
+      color: #23235b;
+      font-weight: bold;
+      border: none;
+      border-radius: 999px;
+      padding: 7px 22px;
+      font-size: 1em;
+      box-shadow: 0 2px 8px #5ce1e655;
+      letter-spacing: 1px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      min-width: unset;
+      min-height: unset;
+      width: auto;
+      height: auto;
+    }
+    #obsModeBtn:hover {
+      background: linear-gradient(90deg, #a259ff 0%, #5ce1e6 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px #a259ff77;
+    }
+    #slotDisplay {
+      display: none !important;
+    }
+    /* Sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  width: 340px;
+  height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #23235b 80%, #181830 100%);
+  box-shadow: 0 8px 32px 8px #5ce1e6aa, 0 2px 32px 0 #000a;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 18px 0 18px;
+  overflow-y: auto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  border-radius: 22px;
+  border: 2.5px solid #5ce1e6;
+  backdrop-filter: blur(4px);
+  transition: box-shadow 0.3s, top 0.3s, right 0.3s;
+}
+.sidebar-section {
+  margin-bottom: 18px;
+  background: #2e2e5b;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 12px #5ce1e633;
+}
+.sidebar-section.header {
+  background: linear-gradient(90deg, #a259ff 0%, #5ce1e6 100%);
+  color: #fff;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-size: 1.18em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 16px #a259ff55;
+}
+.sidebar-title {
+  font-size: 1.18em;
+}
+.sidebar-label {
+  color: #a259ff;
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+.sidebar-value {
+  color: #fff;
+  font-size: 1.18em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.sidebar-row {
+  display: flex;
+  gap: 12px;
+}
+.sidebar-box {
+  flex: 1;
+  background: #23235b;
+  border-radius: 8px;
+  padding: 8px 0;
+  text-align: center;
+}
+.sidebar-section.profit .sidebar-value {
+  color: #ff4e91;
+  font-size: 1.25em;
+}
+.sidebar-section.profit .sidebar-progress {
+  background: #181830;
+  border-radius: 8px;
+  height: 10px;
+  margin-top: 6px;
+  position: relative;
+  width: 100%;
+}
+.sidebar-progress-bar {
+  background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
+  height: 100%;
+  border-radius: 8px;
+  width: 0%;
+  transition: width 0.7s cubic-bezier(.77,0,.18,1);
+}
+.sidebar-progress-text {
+  position: absolute;
+  top: -22px;
+  right: 0;
+  color: #fff;
+  font-size: 0.95em;
+}
+.sidebar-section.best-worst .sidebar-label {
+  color: #fff;
+  background: #a259ff;
+  border-radius: 8px;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.sidebar-slot-card {
+  background: #23235b;
+  border-radius: 10px; /* Changed from 14px to 10px for better fit */
+  box-shadow: 0 2px 8px #5ce1e655;
+  margin: 4px 0; /* Reduced margin for better spacing */
+  display: flex;
+  align-items: stretch;
+  height: 56px;      /* Reduced height for better fit */
+  min-height: 56px;
+  max-height: 56px;
+  border: 1.5px solid #5ce1e6; /* Thinner border */
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s;
+  flex: 0 0 56px;
+  width: calc(100% - 2px); /* Ensures border stays inside the frame */
+  opacity: 1;
+  z-index: 1;
+}
+.sidebar-slot-card.best { border-left: 5px solid #1bbf7a; }
+.sidebar-slot-card.worst { border-left: 5px solid #ff4e91; }
+.sidebar-slot-img {
+  width: 48px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 2px solid #fff2;
+  background: #181830;
+}
+.sidebar-slot-info {
+  flex: 1;
+}
+.sidebar-slot-name {
+  color: #5ce1e6;
+  font-size: 1em;
+  font-weight: bold;
+}
+.sidebar-slot-bet {
+  color: #fff;
+  font-size: 0.95em;
+}
+.sidebar-slot-payout {
+  color: #1bbf7a;
+  font-size: 1em;
+  font-weight: bold;
+}
+.sidebar-slot-x {
+  color: #a259ff;
+  font-size: 0.95em;
+}
+.sidebar-section.bonus-list {
+  background: #23235b;
+  padding: 10px 0 0 0;
+}
+.sidebar-bonus-list-card {
+  background: #23235b;
+  border-radius: 10px; /* Changed from 14px to 10px for better fit */
+  box-shadow: 0 2px 8px #5ce1e655;
+  margin: 4px 0; /* Reduced margin for better spacing */
+  display: flex;
+  align-items: stretch;
+  height: 56px;      /* Reduced height for better fit */
+  min-height: 56px;
+  max-height: 56px;
+  border: 1.5px solid #5ce1e6; /* Thinner border */
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s;
+  flex: 0 0 56px;
+  width: calc(100% - 2px); /* Ensures border stays inside the frame */
+  opacity: 1;
+  z-index: 1;
+}
+.sidebar-bonus-img-large {
+  width: 56px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px; /* Match card border-radius */
+  border: none;
+  background: #23235b;
+  display: block;
+}
+.sidebar-bonus-info-large {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  justify-content: center;
+  padding: 0 8px;
+  height: 100%;
+}
+.sidebar-bonus-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.92em;
+  flex-wrap: wrap;
+}
+.sidebar-bonus-pill {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.97em;
+  margin-right: 0;
+  margin-bottom: 0;
+  background: #23235b;
+  color: #fff;
+  box-shadow: 0 1px 6px #5ce1e633;
+  letter-spacing: 0.5px;
+  border: none;
+  text-shadow: 0 1px 6px #0004;
+  white-space: nowrap;
+}
+.sidebar-bonus-pill.bet {
+  background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);
+  color: #23235b;
+}
+.sidebar-bonus-pill.payout {
+  background: linear-gradient(90deg, #a259ffcc 0%, #5ce1e6cc 100%);
+  color: #23235b;
+}
+.sidebar-bonus-pill.xwin {
+  background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);
+  color: #23235b;
+}
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1300px) {
+  .sidebar { width: 100vw; left: 0; right: 0; top: auto; bottom: 0; height: 60vh; max-width: 100vw; }
+}
+
+.sidebar-bonus-carousel-frame {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+.sidebar-bonus-carousel-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+body.obs-mode .container,
+body.obs-mode h1,
+body.obs-mode .stats-and-display,
+body.obs-mode #slotDisplay,
+body.obs-mode footer {
+  display: none !important;
+}
+body.obs-mode .sidebar {
+  display: flex !important;
+}
+body.obs-mode #obsModeBtn {
+  display: block !important;
+}
+  </style>
+</head>
+<body>
+  <button id="obsModeBtn">OBS Mode</button>
+  <div class="container">
+    <h1>Bonus Hunt Tracker</h1>
+    <div>
+      <label>Starting Money: <input type="number" id="startingMoney" /></label>
+      <label>Finishing Money: <input type="number" id="finishingMoney" /></label>
+    </div>
+    <div class="stats-and-display">
+      <div id="stats"></div>
+      <div class="slot-management-panel">
+        <h3>Add Slot</h3>
+        <div class="add-slot-grid">
+          <input type="text" id="slotName" placeholder="Slot Name" />
+          <input type="url" id="slotImage" placeholder="Image URL" />
+          <input type="number" id="slotBet" placeholder="Bet Amount" />
+          <label style="margin:0;display:flex;align-items:center;justify-content:center;">
+            <input type="checkbox" id="slotSuperBonus" style="margin-right:6px;" /> Super Bonus
+          </label>
+          <button onclick="addSlot()">Add Slot</button>
+        </div>
+        <div class="slideshow">
+          <img id="slotPreview" src="" alt="Slot Preview" />
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Slot Name</th>
+              <th>Bet</th>
+              <th>Payout</th>
+              <th>Super Bonus</th>
+              <th>Image Preview</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="slotTable"></tbody>
+        </table>
+      </div>
+      <div class="slot-display" id="slotDisplay"></div>
+    </div>
+  </div>
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-section header">
+      <div class="sidebar-title">Bonus Hunt/Opening <span id="huntNumber">#1</span></div>
+    </div>
+    <div class="sidebar-section target">
+      <div class="sidebar-label">🎯 Target</div>
+      <div class="sidebar-value" id="sidebarTarget">0€</div>
+    </div>
+    <div class="sidebar-section avg-be">
+      <div class="sidebar-row">
+        <div class="sidebar-box">
+          <div class="sidebar-label">Avg</div>
+          <div class="sidebar-value" id="sidebarAvg">0x</div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-label">BE</div>
+          <div class="sidebar-value" id="sidebarBE">0x</div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-label">Init. BE</div>
+          <div class="sidebar-value" id="sidebarInitBE">0x</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-section profit">
+      <div class="sidebar-label">💰 Profit</div>
+      <div class="sidebar-value" id="sidebarProfit">0€</div>
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-bar" id="sidebarProgressBar"></div>
+        <div class="sidebar-progress-text" id="sidebarProgressText"></div>
+      </div>
+    </div>
+    <div class="sidebar-section best-worst">
+      <div class="sidebar-label">🏆 Best & Worst Slot</div>
+      <div id="sidebarBestSlot"></div>
+      <div id="sidebarWorstSlot"></div>
+    </div>
+    <div class="sidebar-section bonus-list">
+      <div class="sidebar-label">🎰 Bonus List</div>
+      <div class="sidebar-bonus-carousel-frame">
+        <div id="sidebarBonusList" class="sidebar-bonus-carousel-track"></div>
+      </div>
+    </div>
+    <div class="sidebar-section discord">
+      <div class="sidebar-label">🎁 Discord Offers</div>
+      <div class="sidebar-discord-text">
+        Junta-te ao nosso Discord para estares a par das nossas ofertas exclusivas!
+      </div>
+    </div>
+  </div>
+  <script>
+    const slots = [];
+    let displayIndex = 0;
+
+    function addSlot() {
+      const name = document.getElementById('slotName').value;
+      const image = document.getElementById('slotImage').value;
+      const bet = parseFloat(document.getElementById('slotBet').value) || 0;
+      const superBonus = document.getElementById('slotSuperBonus').checked;
+      if (!name || !image || !bet) return;
+      const slot = { name, image, payout: 0, bet, superBonus };
+      slots.push(slot);
+      updateTable();
+      updateSidebar();
+      // Clear input fields for next entry
+      document.getElementById('slotName').value = '';
+      document.getElementById('slotImage').value = '';
+      document.getElementById('slotBet').value = '';
+      document.getElementById('slotSuperBonus').checked = false;
+    }
+
+    function removeSlot(index) {
+      slots.splice(index, 1);
+      updateTable();
+      updateSidebar();
+    }
+
+    function updateTable() {
+      const table = document.getElementById('slotTable');
+      table.innerHTML = '';
+      slots.forEach((slot, index) => {
+        const row = document.createElement('tr');
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = slot.name;
+        nameCell.onmouseover = () => {
+          document.getElementById('slotPreview').src = slot.image;
+        };
+
+        const betCell = document.createElement('td');
+        const betInput = document.createElement('input');
+        betInput.type = 'number';
+        betInput.value = slot.bet;
+        betInput.onchange = (e) => {
+          slots[index].bet = parseFloat(e.target.value) || 0;
+          updateStats();
+          updateSidebar();
+        };
+        betCell.appendChild(betInput);
+
+        const payoutCell = document.createElement('td');
+        const payoutInput = document.createElement('input');
+        payoutInput.type = 'number';
+        payoutInput.value = slot.payout;
+        payoutInput.onchange = (e) => {
+          slots[index].payout = parseFloat(e.target.value) || 0;
+          updateStats();
+          updateSidebar();
+        };
+        payoutCell.appendChild(payoutInput);
+
+        const superBonusCell = document.createElement('td');
+        const superBonusCheckbox = document.createElement('input');
+        superBonusCheckbox.type = 'checkbox';
+        superBonusCheckbox.checked = slot.superBonus;
+        superBonusCheckbox.onchange = (e) => {
+          slots[index].superBonus = e.target.checked;
+          updateStats();
+          updateSidebar();
+        };
+        superBonusCell.appendChild(superBonusCheckbox);
+
+        const imageCell = document.createElement('td');
+        const img = document.createElement('img');
+        img.src = slot.image;
+        imageCell.appendChild(img);
+
+        const removeCell = document.createElement('td');
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => removeSlot(index);
+        removeCell.appendChild(removeBtn);
+
+        row.appendChild(nameCell);
+        row.appendChild(betCell);
+        row.appendChild(payoutCell);
+        row.appendChild(superBonusCell);
+        row.appendChild(imageCell);
+        row.appendChild(removeCell);
+        table.appendChild(row);
+      });
+      updateStats();
+    }
+
+    function updateStats() {
+      const starting = parseFloat(document.getElementById('startingMoney').value) || 0;
+      const finishing = parseFloat(document.getElementById('finishingMoney').value) || 0;
+      const totalBonuses = slots.length;
+      const totalBet = slots.reduce((sum, s) => sum + (s.bet * (s.superBonus ? 200 : 100)), 0);
+      const costPerBonus = totalBonuses > 0 ? (totalBet / totalBonuses).toFixed(2) : 0;
+      const totalPayout = slots.reduce((sum, s) => sum + (s.payout || 0), 0);
+      const averageBet = totalBonuses > 0 ? (totalBet / totalBonuses) : 0;
+      const spent = starting - finishing;
+      const toBreakEven = Math.max(0, spent - totalPayout);
+      const xToBreakEven = averageBet > 0 ? (toBreakEven / averageBet).toFixed(2) : 'N/A';
+      const profitLoss = totalPayout - spent;
+
+      const statsDiv = document.getElementById('stats');
+      statsDiv.innerHTML = `
+        <p>Total Bonuses: ${totalBonuses}</p>
+        <p>Total Bet Cost: €${totalBet.toFixed(2)}</p>
+        <p>Cost per Bonus: €${costPerBonus}</p>
+        <p><strong>Average Bet Size: €${averageBet.toFixed(2)}</strong></p>
+        <p>Total Return: €${totalPayout.toFixed(2)}</p>
+        <p>
+          <strong>Break Even:</strong>
+          <br>Amount Needed: <span style="color:#0ff">€${toBreakEven.toFixed(2)}</span>
+          <br>X Needed: <span style="color:#0ff">${xToBreakEven}x average bet</span>
+        </p>
+        <p class="${profitLoss >= 0 ? 'profit' : 'loss'}">
+          ${profitLoss >= 0 ? 'Profit' : 'Loss'}: €${profitLoss.toFixed(2)} (${spent > 0 ? ((profitLoss / spent) * 100).toFixed(2) : 'N/A'}%)
+        </p>
+      `;
+    }
+
+    function renderBonusCarousel() {
+      const track = document.getElementById('sidebarBonusList');
+      let html = '';
+      slots.forEach((slot) => {
+        const xWin = slot.bet > 0 ? (slot.payout / slot.bet).toFixed(2) : "0.00";
+        html += `
+          <div class="sidebar-bonus-list-card">
+            <img class="sidebar-bonus-img-large" src="${slot.image}" alt="${slot.name}" />
+            <div class="sidebar-bonus-info-large">
+              <div class="sidebar-bonus-row">
+                <span class="sidebar-bonus-pill bet">Bet: €${slot.bet.toFixed(2)}</span>
+                <span class="sidebar-bonus-pill payout">Payout: €${slot.payout ? slot.payout.toFixed(2) : "0.00"}</span>
+                <span class="sidebar-bonus-pill xwin">X Win: ${xWin}x</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      track.innerHTML = html;
+    }
+
+    function updateSidebar() {
+      const starting = parseFloat(document.getElementById('startingMoney').value) || 0;
+      const finishing = parseFloat(document.getElementById('finishingMoney').value) || 0;
+      const totalBonuses = slots.length;
+      const totalBet = slots.reduce((sum, s) => sum + (s.bet * (s.superBonus ? 200 : 100)), 0);
+      const totalPayout = slots.reduce((sum, s) => sum + (s.payout || 0), 0);
+      const averageBet = totalBonuses > 0 ? (totalBet / totalBonuses) : 0;
+      const spent = starting - finishing;
+      const profitLoss = totalPayout - spent;
+      const breakEvenX = averageBet > 0 ? ((spent - totalPayout) / averageBet).toFixed(2) : 'N/A';
+
+      document.getElementById('sidebarTarget').textContent = finishing ? finishing.toFixed(2) + "€" : "0€";
+      document.getElementById('sidebarAvg').textContent = averageBet ? (totalPayout / totalBet * 100).toFixed(0) + "x" : "0x";
+      document.getElementById('sidebarBE').textContent = breakEvenX + "x";
+      document.getElementById('sidebarInitBE').textContent = averageBet ? (spent / averageBet).toFixed(0) + "x" : "0x";
+      document.getElementById('sidebarProfit').textContent = (profitLoss >= 0 ? "+" : "") + profitLoss.toFixed(2) + "€";
+      const progress = totalBonuses > 0 ? (slots.filter(s => s.payout > 0).length / totalBonuses) * 100 : 0;
+      document.getElementById('sidebarProgressBar').style.width = progress + "%";
+      document.getElementById('sidebarProgressText').textContent = `${slots.filter(s => s.payout > 0).length}/${totalBonuses}`;
+
+      // Best & Worst
+      let bestSlot = null, worstSlot = null;
+      if (slots.some(s => s.payout && s.payout !== 0)) {
+        bestSlot = slots.reduce((max, s) => (s.payout > (max?.payout ?? -Infinity) ? s : max), null);
+        worstSlot = slots.reduce((min, s) => (s.payout < (min?.payout ?? Infinity) ? s : min), null);
+      }
+      document.getElementById('sidebarBestSlot').innerHTML = bestSlot ? `
+        <div class="sidebar-slot-card best">
+          <img class="sidebar-slot-img" src="${bestSlot.image}" alt="${bestSlot.name}" />
+          <div class="sidebar-slot-info">
+            <div class="sidebar-slot-name">${bestSlot.name}</div>
+            <div class="sidebar-slot-bet">Bet: €${bestSlot.bet.toFixed(2)}</div>
+            <div class="sidebar-slot-payout">€${bestSlot.payout.toFixed(2)}</div>
+            <div class="sidebar-slot-x">${bestSlot.bet > 0 ? (bestSlot.payout / bestSlot.bet).toFixed(2) + "x" : ""}</div>
+          </div>
+        </div>
+      ` : '';
+      document.getElementById('sidebarWorstSlot').innerHTML = worstSlot ? `
+        <div class="sidebar-slot-card worst">
+          <img class="sidebar-slot-img" src="${worstSlot.image}" alt="${worstSlot.name}" />
+          <div class="sidebar-slot-info">
+            <div class="sidebar-slot-name">${worstSlot.name}</div>
+            <div class="sidebar-slot-bet">Bet: €${worstSlot.bet.toFixed(2)}</div>
+            <div class="sidebar-slot-payout">€${worstSlot.payout.toFixed(2)}</div>
+            <div class="sidebar-slot-x">${worstSlot.bet > 0 ? (worstSlot.payout / worstSlot.bet).toFixed(2) + "x" : ""}</div>
+          </div>
+        </div>
+      ` : '';
+
+      renderBonusCarousel();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateSidebar();
+    });
+
+    document.getElementById('slotBet').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        addSlot();
+      }
+    });
+
+    document.getElementById('startingMoney').addEventListener('input', updateSidebar);
+    document.getElementById('finishingMoney').addEventListener('input', updateSidebar);
+
+    document.getElementById('obsModeBtn').addEventListener('click', function() {
+      document.body.classList.toggle('obs-mode');
+    });
+  </script>
+</body>
+<footer style="width:100%;text-align:center;padding:18px 0 12px 0;color:#a259ff;font-size:1em;letter-spacing:1px;opacity:0.85;">
+  &copy; 2025 osecaadegas. All rights reserved. This site and its code are the property of osecaadegas.
+</footer>
+</html>
