@@ -6,131 +6,95 @@
   <title>Bonus Hunt Tracker</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    /* Modern & Simple Restyle for Bonus Hunt Tracker */
-    /* filepath: d:\Website\New folder\BonusHuntV1.html */
-
-    /* General Modern Look */
+    :root {
+      --sidebar-bg: linear-gradient(135deg, #232e4d 80%, #181f36 100%);
+      --sidebar-border: #3ec6ff;
+      --sidebar-card-bg: #232e4d;
+      --sidebar-label-bg: #3ec6ff;
+      --sidebar-label-color: #fff;
+      --sidebar-pill-bg: #181f36;
+      --sidebar-pill-bet: linear-gradient(90deg, #3ec6ffcc 0%, #5ce1e6cc 100%);
+      --sidebar-pill-payout: linear-gradient(90deg, #5ce1e6cc 0%, #3ec6ffcc 100%);
+      --sidebar-pill-xwin: linear-gradient(90deg, #3ec6ffcc 0%, #5ce1e6cc 100%);
+      --sidebar-progress-bar: linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%);
+    }
     body {
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #181830 0%, #23235b 100%);
-      color: #e0e6f6;
+      background: linear-gradient(135deg, #181f36 0%, #22305a 100%);
+      color: #e0f4ff;
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      padding-top: 64px;
     }
-
     .container {
       max-width: 1800px;
       width: 95vw;
       margin: 32px auto 0 auto;
       padding: 32px 32px 32px 32px;
-      background: rgba(30, 30, 60, 0.92);
+      background: rgba(24, 31, 54, 0.98);
       border-radius: 18px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+      box-shadow: 0 8px 32px 0 #3ec6ff33;
     }
-
     h1, h3 {
-      color: #a259ff;
+      color: #3ec6ff;
       text-align: center;
       letter-spacing: 2px;
       margin-bottom: 18px;
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
     }
-
-    label, input, button {
-      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
-    }
-
     label {
-      color: #7f7fff;
-      margin-right: 12px;
-      display: inline-block;
-      text-align: center;
-      min-width: 110px;
+      color: #3ec6ff;
     }
-
     input, button {
-      padding: 10px;
-      margin: 6px 4px;
-      background: #23235b;
-      color: #e0e6f6;
-      border: 1px solid #a259ff;
+      background: #232e4d;
+      color: #e0f4ff;
+      border: 1.5px solid #3ec6ff;
       border-radius: 8px;
-      outline: none;
-      transition: border 0.2s, box-shadow 0.2s;
-      font-size: 1em;
-      display: inline-block;
-      text-align: center;
     }
-
-    input[type="text"], input[type="url"], input[type="number"] {
-      text-align: center;
-    }
-
     button {
-      background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
-      color: #23235b;
+      background: linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%);
+      color: #fff;
       font-weight: bold;
       border: none;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
       border-radius: 8px;
+      box-shadow: 0 2px 8px #3ec6ff55;
     }
-
     button:hover {
-      background: linear-gradient(90deg, #a259ff 0%, #5ce1e6 100%);
+      background: linear-gradient(90deg, #5ce1e6 0%, #3ec6ff 100%);
       color: #fff;
     }
-
     table {
+      background: #232e4d;
+      box-shadow: 0 2px 12px #3ec6ff33;
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 24px;
-      background: rgba(35, 35, 91, 0.95);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px #a259ff33;
-      font-size: 0.95em;
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 0;
+      margin-right: 0;
     }
-
-    th, td {
-      padding: 6px 4px;
-      text-align: center;
-      vertical-align: middle;
-    }
-
     th {
-      background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
-      color: #23235b;
-      font-weight: bold;
-      letter-spacing: 1px;
-      border-bottom: 2px solid #a259ff;
-      font-size: 1em;
+      background: linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%);
+      color: #181f36;
     }
-
     td input[type="number"] {
       width: 54px;
       padding: 3px 4px;
       font-size: 0.95em;
     }
-
     table td img {
       width: 38px;
       height: 26px;
       object-fit: contain;
       border-radius: 5px;
-      border: 1px solid #a259ff;
-      background: #181830;
-      box-shadow: 0 1px 4px #5ce1e633;
+      border: 1.5px solid #3ec6ff;
+      background: #181f36;
+      box-shadow: 0 1px 4px #3ec6ff33;
       margin: 0 auto;
       display: block;
       padding: 1px;
     }
-
-    /* Slot Display Modernization */
     .slot-display {
       flex: 0 0 auto;
       min-width: 900px;
@@ -142,7 +106,6 @@
       height: 100%;
       justify-content: center;
     }
-
     .slot-stack-container {
       width: 1200px;
       height: 700px;
@@ -156,7 +119,6 @@
       overflow: hidden;
       position: relative;
     }
-
     .swipe-track {
       display: flex;
       transition: transform 1.5s cubic-bezier(.77,0,.18,1);
@@ -164,7 +126,6 @@
       height: 680px;
       align-items: center;
     }
-
     .slot-stack-slide {
       width: 1200px;
       height: 680px;
@@ -173,24 +134,22 @@
       justify-content: center;
       margin: 0;
       position: relative;
-      background: #23235b;
+      background: #232e4d;
       border-radius: 18px;
-      box-shadow: 0 6px 32px #5ce1e655, 0 0 0 4px #5ce1e6;
-      border: 2.5px solid #a259ff;
+      box-shadow: 0 6px 32px #3ec6ff55, 0 0 0 4px #3ec6ff;
+      border: 2.5px solid #3ec6ff;
       transition: opacity 0.7s;
       opacity: 1;
     }
-
-    /* Modern, minimal, and aligned info boxes */
     .slot-corner-label {
       position: absolute;
-      background: rgba(92, 225, 230, 0.92);
-      color: #23235b;
+      background: rgba(62, 198, 255, 0.92);
+      color: #181f36;
       font-weight: 600;
       font-size: 1em;
       padding: 4px 16px;
       border-radius: 14px;
-      box-shadow: 0 2px 8px #5ce1e655;
+      box-shadow: 0 2px 8px #3ec6ff55;
       z-index: 3;
       pointer-events: none;
       text-shadow: 0 1px 6px #fff4;
@@ -200,19 +159,16 @@
       backdrop-filter: blur(2px);
       transition: background 0.2s;
     }
-
-    .slot-corner-label.bet    { top: 12px; left: 12px; background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);}
-    .slot-corner-label.payout { top: 12px; right: 12px; background: linear-gradient(90deg, #a259ffcc 0%, #5ce1e6cc 100%);}
-    .slot-corner-label.xwin   { bottom: 12px; right: 12px; background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);}
-
-    /* Stats Panel - Different font and color for clarity */
+    .slot-corner-label.bet    { top: 12px; left: 12px; background: linear-gradient(90deg, #3ec6ffcc 0%, #5ce1e6cc 100%);}
+    .slot-corner-label.payout { top: 12px; right: 12px; background: linear-gradient(90deg, #5ce1e6cc 0%, #3ec6ffcc 100%);}
+    .slot-corner-label.xwin   { bottom: 12px; right: 12px; background: linear-gradient(90deg, #3ec6ffcc 0%, #5ce1e6cc 100%);}
     #stats {
       margin-top: 18px;
-      background: linear-gradient(135deg, #fff 0%, #e0e6f6 100%);
+      background: linear-gradient(135deg, #232e4d 0%, #22305a 100%);
       border-radius: 14px;
       padding: 22px 28px;
-      box-shadow: 0 2px 16px #5ce1e622;
-      color: #23235b;
+      box-shadow: 0 2px 16px #3ec6ff22;
+      color: #e0f4ff;
       font-size: 1.13em;
       min-width: 340px;
       max-width: 480px;
@@ -221,38 +177,31 @@
       font-family: 'Segoe UI', Arial, sans-serif;
       letter-spacing: 0.1px;
     }
-
     #stats strong {
-      color: #a259ff;
+      color: #3ec6ff;
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
       font-size: 1.08em;
     }
-
     #stats span {
       font-weight: bold;
-      color: #5ce1e6;
+      color: #3ec6ff;
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
     }
-
     #stats p {
       margin: 10px 0 8px 0;
       font-size: 1.04em;
       line-height: 1.5;
     }
-
     #stats .profit {
       color: #1bbf7a;
       font-weight: bold;
       font-size: 1.08em;
     }
-
     #stats .loss {
       color: #ff4e91;
       font-weight: bold;
       font-size: 1.08em;
     }
-
-    /* Responsive improvements */
     @media (max-width: 900px) {
       .stats-and-display {
         flex-direction: column;
@@ -267,7 +216,6 @@
         min-height: 220px;
       }
     }
-
     @media (max-width: 700px) {
       .container {
         padding: 10px 2vw;
@@ -282,7 +230,6 @@
         padding: 8px 2px;
       }
     }
-
     .stats-and-display {
       display: flex;
       flex-direction: row;
@@ -292,13 +239,11 @@
       margin-top: 36px;
       width: 100%;
     }
-
     #stats {
       min-width: 340px;
       max-width: 480px;
       flex: 0 0 340px;
     }
-
     .slot-management-panel {
       flex: 1 1 0;
       min-width: 400px;
@@ -307,7 +252,6 @@
       flex-direction: column;
       gap: 18px;
     }
-
     .add-slot-grid {
       display: flex;
       flex-wrap: wrap;
@@ -315,36 +259,23 @@
       align-items: center;
       margin-bottom: 10px;
     }
-
     .add-slot-grid input,
     .add-slot-grid label,
     .add-slot-grid button {
       margin: 0;
     }
-
     .slideshow {
       margin-bottom: 10px;
     }
-
-    table {
-      width: 100%;
-      max-width: 700px;
-      margin-left: 0;
-      margin-right: 0;
-    }
     #obsModeBtn {
-      position: absolute;
-      top: 24px;
-      left: 24px;
-      z-index: 9999;
-      background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
-      color: #23235b;
+      background: linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%);
+      color: #181f36;
       font-weight: bold;
       border: none;
       border-radius: 999px;
       padding: 7px 22px;
       font-size: 1em;
-      box-shadow: 0 2px 8px #5ce1e655;
+      box-shadow: 0 2px 8px #3ec6ff55;
       letter-spacing: 1px;
       transition: background 0.2s, color 0.2s, box-shadow 0.2s;
       min-width: unset;
@@ -353,276 +284,508 @@
       height: auto;
     }
     #obsModeBtn:hover {
-      background: linear-gradient(90deg, #a259ff 0%, #5ce1e6 100%);
+      background: linear-gradient(90deg, #5ce1e6 0%, #3ec6ff 100%);
       color: #fff;
-      box-shadow: 0 4px 16px #a259ff77;
+      box-shadow: 0 4px 16px #3ec6ff77;
     }
     #slotDisplay {
       display: none !important;
     }
     /* Sidebar styles */
-.sidebar {
-  position: fixed;
-  top: 32px;
-  right: 32px;
-  width: 340px;
-  height: calc(100vh - 64px);
-  background: linear-gradient(135deg, #23235b 80%, #181830 100%);
-  box-shadow: 0 8px 32px 8px #5ce1e6aa, 0 2px 32px 0 #000a;
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  padding: 18px 18px 0 18px;
-  overflow-y: auto;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  border-radius: 22px;
-  border: 2.5px solid #5ce1e6;
-  backdrop-filter: blur(4px);
-  transition: box-shadow 0.3s, top 0.3s, right 0.3s;
-}
-.sidebar-section {
-  margin-bottom: 18px;
-  background: #2e2e5b;
-  border-radius: 14px;
-  padding: 14px 16px;
-  box-shadow: 0 2px 12px #5ce1e633;
-}
-.sidebar-section.header {
-  background: linear-gradient(90deg, #a259ff 0%, #5ce1e6 100%);
-  color: #fff;
-  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
-  font-size: 1.18em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-align: center;
-  margin-bottom: 22px;
-  box-shadow: 0 2px 16px #a259ff55;
-}
-.sidebar-title {
-  font-size: 1.18em;
-}
-.sidebar-label {
-  color: #a259ff;
-  font-weight: bold;
-  font-size: 1em;
-  margin-bottom: 4px;
-  letter-spacing: 1px;
-}
-.sidebar-value {
-  color: #fff;
-  font-size: 1.18em;
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-.sidebar-row {
-  display: flex;
-  gap: 12px;
-}
-.sidebar-box {
-  flex: 1;
-  background: #23235b;
-  border-radius: 8px;
-  padding: 8px 0;
-  text-align: center;
-}
-.sidebar-section.profit .sidebar-value {
-  color: #ff4e91;
-  font-size: 1.25em;
-}
-.sidebar-section.profit .sidebar-progress {
-  background: #181830;
-  border-radius: 8px;
-  height: 10px;
-  margin-top: 6px;
-  position: relative;
-  width: 100%;
-}
-.sidebar-progress-bar {
-  background: linear-gradient(90deg, #5ce1e6 0%, #a259ff 100%);
-  height: 100%;
-  border-radius: 8px;
-  width: 0%;
-  transition: width 0.7s cubic-bezier(.77,0,.18,1);
-}
-.sidebar-progress-text {
-  position: absolute;
-  top: -22px;
-  right: 0;
-  color: #fff;
-  font-size: 0.95em;
-}
-.sidebar-section.best-worst .sidebar-label {
-  color: #fff;
-  background: #a259ff;
-  border-radius: 8px;
-  padding: 4px 10px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-.sidebar-slot-card {
-  background: #23235b;
-  border-radius: 10px; /* Changed from 14px to 10px for better fit */
-  box-shadow: 0 2px 8px #5ce1e655;
-  margin: 4px 0; /* Reduced margin for better spacing */
-  display: flex;
-  align-items: stretch;
-  height: 56px;      /* Reduced height for better fit */
-  min-height: 56px;
-  max-height: 56px;
-  border: 1.5px solid #5ce1e6; /* Thinner border */
-  overflow: hidden;
-  position: relative;
-  transition: box-shadow 0.2s;
-  flex: 0 0 56px;
-  width: calc(100% - 2px); /* Ensures border stays inside the frame */
-  opacity: 1;
-  z-index: 1;
-}
-.sidebar-slot-card.best { border-left: 5px solid #1bbf7a; }
-.sidebar-slot-card.worst { border-left: 5px solid #ff4e91; }
-.sidebar-slot-img {
-  width: 48px;
-  height: 36px;
-  object-fit: contain;
-  border-radius: 6px;
-  border: 2px solid #fff2;
-  background: #181830;
-}
-.sidebar-slot-info {
-  flex: 1;
-}
-.sidebar-slot-name {
-  color: #5ce1e6;
-  font-size: 1em;
-  font-weight: bold;
-}
-.sidebar-slot-bet {
-  color: #fff;
-  font-size: 0.95em;
-}
-.sidebar-slot-payout {
-  color: #1bbf7a;
-  font-size: 1em;
-  font-weight: bold;
-}
-.sidebar-slot-x {
-  color: #a259ff;
-  font-size: 0.95em;
-}
-.sidebar-section.bonus-list {
-  background: #23235b;
-  padding: 10px 0 0 0;
-}
-.sidebar-bonus-list-card {
-  background: #23235b;
-  border-radius: 10px; /* Changed from 14px to 10px for better fit */
-  box-shadow: 0 2px 8px #5ce1e655;
-  margin: 4px 0; /* Reduced margin for better spacing */
-  display: flex;
-  align-items: stretch;
-  height: 56px;      /* Reduced height for better fit */
-  min-height: 56px;
-  max-height: 56px;
-  border: 1.5px solid #5ce1e6; /* Thinner border */
-  overflow: hidden;
-  position: relative;
-  transition: box-shadow 0.2s;
-  flex: 0 0 56px;
-  width: calc(100% - 2px); /* Ensures border stays inside the frame */
-  opacity: 1;
-  z-index: 1;
-}
-.sidebar-bonus-img-large {
-  width: 56px;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px 0 0 8px; /* Match card border-radius */
-  border: none;
-  background: #23235b;
-  display: block;
-}
-.sidebar-bonus-info-large {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-  justify-content: center;
-  padding: 0 8px;
-  height: 100%;
-}
-.sidebar-bonus-row {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  font-size: 0.92em;
-  flex-wrap: wrap;
-}
-.sidebar-bonus-pill {
-  display: inline-block;
-  padding: 3px 12px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 0.97em;
-  margin-right: 0;
-  margin-bottom: 0;
-  background: #23235b;
-  color: #fff;
-  box-shadow: 0 1px 6px #5ce1e633;
-  letter-spacing: 0.5px;
-  border: none;
-  text-shadow: 0 1px 6px #0004;
-  white-space: nowrap;
-}
-.sidebar-bonus-pill.bet {
-  background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);
-  color: #23235b;
-}
-.sidebar-bonus-pill.payout {
-  background: linear-gradient(90deg, #a259ffcc 0%, #5ce1e6cc 100%);
-  color: #23235b;
-}
-.sidebar-bonus-pill.xwin {
-  background: linear-gradient(90deg, #5ce1e6cc 0%, #a259ffcc 100%);
-  color: #23235b;
-}
-@keyframes slideUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@media (max-width: 1300px) {
-  .sidebar { width: 100vw; left: 0; right: 0; top: auto; bottom: 0; height: 60vh; max-width: 100vw; }
+    .sidebar {
+      position: fixed;
+      top: 32px;
+      right: 32px;
+      width: 340px;
+      height: 1230px;
+      background: var(--sidebar-bg);
+      box-shadow: 0 8px 32px 8px #3ec6ffaa, 0 2px 32px 0 #000a;
+      z-index: 10002;
+      display: flex;
+      flex-direction: column;
+      padding: 18px 18px 0 18px;
+      overflow-y: auto;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      border-radius: 22px;
+      border: 2.5px solid var(--sidebar-border);
+      backdrop-filter: blur(4px);
+      transition: box-shadow 0.3s, top 0.3s, right 0.3s;
+    }
+    .sidebar-section {
+      margin-bottom: 18px;
+      background: var(--sidebar-card-bg);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 12px #3ec6ff33;
+      border: 1.5px solid var(--sidebar-border);
+    }
+    .sidebar-section.header {
+      background: linear-gradient(90deg, var(--sidebar-label-bg) 0%, #5ce1e6 100%);
+      color: var(--sidebar-label-color);
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+      font-size: 1.18em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 16px #3ec6ff55;
+      border: none;
+    }
+    .sidebar-title {
+      font-size: 1.18em;
+    }
+    .sidebar-label {
+      color: var(--sidebar-label-bg);
+      font-weight: bold;
+      font-size: 1em;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+      background: none;
+    }
+    .sidebar-value {
+      color: #fff;
+      font-size: 1.18em;
+      font-weight: bold;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    .sidebar-row {
+      display: flex;
+      gap: 12px;
+    }
+    .sidebar-box {
+      flex: 1;
+      background: var(--sidebar-pill-bg);
+      border-radius: 8px;
+      padding: 4px 0;
+      text-align: center;
+    }
+    .sidebar-section.profit .sidebar-value {
+      color: #3ec6ff;
+    }
+    .sidebar-section.profit .sidebar-progress {
+      background: var(--sidebar-pill-bg);
+      border-radius: 8px;
+      height: 10px;
+      margin-top: 6px;
+      position: relative;
+      width: 100%;
+    }
+    .sidebar-progress-bar {
+      background: var(--sidebar-progress-bar);
+      height: 100%;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.7s cubic-bezier(.77,0,.18,1);
+    }
+    .sidebar-progress-text {
+      position: absolute;
+      top: -16px;
+      right: 0;
+      color: #fff;
+      font-size: 0.85em;
+    }
+    .sidebar-section.best-worst .sidebar-label,
+    .sidebar-section.bonus-list .sidebar-label {
+      color: #fff;
+      background: var(--sidebar-label-bg);
+      border-radius: 8px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+    .sidebar-slot-card {
+      background: var(--sidebar-card-bg);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #3ec6ff55;
+      margin: 4px 0;
+      display: flex;
+      align-items: stretch;
+      height: 56px;
+      min-height: 56px;
+      max-height: 56px;
+      border: 1.5px solid var(--sidebar-border);
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 0.2s;
+      flex: 0 0 56px;
+      width: calc(100% - 2px);
+      opacity: 1;
+      z-index: 1;
+    }
+    .sidebar-slot-card.best { border-left: 5px solid #1bbf7a; }
+    .sidebar-slot-card.worst { border-left: 5px solid #ff4e91; }
+    .sidebar-slot-img {
+      width: 48px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 6px;
+      border: 2px solid #fff2;
+      background: var(--sidebar-pill-bg);
+    }
+    .sidebar-slot-info {
+      flex: 1;
+    }
+    .sidebar-slot-name {
+      color: var(--sidebar-label-bg);
+      font-size: 1em;
+      font-weight: bold;
+    }
+    .sidebar-slot-bet {
+      color: #fff;
+      font-size: 0.95em;
+    }
+    .sidebar-slot-payout {
+      color: #1bbf7a;
+      font-size: 1em;
+      font-weight: bold;
+    }
+    .sidebar-slot-x {
+      color: var(--sidebar-label-bg);
+      font-size: 0.95em;
+    }
+    .sidebar-section.bonus-list {
+      background: var(--sidebar-pill-bg);
+      padding: 10px 0 0 0;
+      border: 1.5px solid var(--sidebar-border);
+    }
+    .sidebar-bonus-list-card {
+      border: 1px solid var(--sidebar-border);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #3ec6ff33;
+      margin: 4px 0;
+      display: flex;
+      align-items: stretch;
+      height: 56px;
+      min-height: 56px;
+      max-height: 56px;
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 0.2s;
+      flex: 0 0 56px;
+      width: calc(100% - 2px);
+      opacity: 1;
+      z-index: 1;
+    }
+    .sidebar-bonus-img-large {
+      width: 64px;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px 0 0 8px;
+      border: none;
+      background: var(--sidebar-pill-bg);
+      display: block;
+    }
+    .sidebar-bonus-info-large {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      justify-content: center;
+      padding: 0 14px;
+      height: 100%;
+    }
+    .sidebar-bonus-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      font-size: 0.92em;
+      flex-wrap: wrap;
+    }
+    .sidebar-bonus-pill {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.97em;
+      margin-right: 0;
+      margin-bottom: 0;
+      background: var(--sidebar-pill-bg);
+      color: #fff;
+      box-shadow: 0 1px 6px #3ec6ff33;
+      letter-spacing: 0.5px;
+      border: none;
+      text-shadow: 0 1px 6px #0004;
+      white-space: nowrap;
+    }
+    .sidebar-bonus-pill.bet {
+      background: var(--sidebar-pill-bet);
+      color: #181f36;
+    }
+    .sidebar-bonus-pill.payout {
+      background: var(--sidebar-pill-payout);
+      color: #181f36;
+    }
+    .sidebar-bonus-pill.xwin {
+      background: var(--sidebar-pill-xwin);
+      color: #181f36;
+    }
+    .sidebar-bonus-list-card.super-bonus {
+      border: 1.5px solid #ffb300 !important;
+      box-shadow: 0 0 12px #ffb30066, 0 2px 8px #3ec6ff55;
+      animation: superBonusShake 2s cubic-bezier(.36,.07,.19,.97) infinite;
+    }
+    .sidebar-bonus-carousel-frame {
+      width: 100%;
+      height: 270px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sidebar-bonus-carousel-track {
+      display: flex;
+      flex-direction: column;
+      will-change: transform;
+    }
+    @keyframes superBonusShake {
+        0% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+        20%, 40%, 60%, 80% { transform: translateX(4px); }
+        100% { transform: translateX(0); }
+    }
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 1300px) {
+      .sidebar { width: 100vw; left: 0; right: 0; top: auto; bottom: 0; height: 60vh; max-width: 100vw; }
+    }
+    body.obs-mode .container,
+    body.obs-mode h1,
+    body.obs-mode .stats-and-display,
+    body.obs-mode #slotDisplay,
+    body.obs-mode footer {
+      display: none !important;
+    }
+    body.obs-mode .sidebar {
+      display: flex !important;
+    }
+    body.obs-mode #obsModeBtn {
+      display: block !important;
+    }
+    .topbar {
+      display: none !important;
+    }
+    .top-buttons {
+      position: fixed;
+      top: 24px;
+      left: 1050px;
+      z-index: 11000;
+      display: flex;
+      gap: 12px;
+    }
+    .top-buttons button {
+      background: linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%);
+      color: #181f36;
+      font-weight: bold;
+      border: none;
+      border-radius: 999px;
+      padding: 7px 22px;
+      font-size: 1em;
+      box-shadow: 0 2px 8px #3ec6ff55;
+      letter-spacing: 1px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .top-buttons button:hover {
+      background: linear-gradient(90deg, #5ce1e6 0%, #3ec6ff 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px #3ec6ff77;
+    }
+    .sidebar-best-worst-row {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 12px;
+    }
+    .sidebar-slot-card-large {
+      position: relative;
+      width: 110px;      /* was 140px */
+      height: 140px;     /* was 180px */
+      border-radius: 14px; /* was 16px */
+      overflow: hidden;
+      background: var(--sidebar-card-bg);
+      box-shadow: 0 2px 16px #3ec6ff55;
+      border: 3px solid var(--sidebar-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.2s;
+    }
+    .sidebar-slot-img-large {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px; /* was 14px */
+      display: block;
+    }
+    .sidebar-slot-corner-label {
+      position: absolute;
+      background: rgba(62, 198, 255, 0.92);
+      color: #181f36;
+      font-weight: 600;
+      font-size: 0.85em; /* was 0.98em */
+      padding: 2px 7px;  /* was 3px 10px */
+      border-radius: 8px; /* was 10px */
+      box-shadow: 0 2px 8px #3ec6ff55;
+      z-index: 3;
+      pointer-events: none;
+      text-shadow: 0 1px 6px #fff4;
+      border: none;
+      letter-spacing: 0.5px;
+      opacity: 0.96;
+      backdrop-filter: blur(2px);
+      transition: background 0.2s;
+    }
+    .sidebar-slot-corner-label.bet     { top: 6px; left: 8px; background: var(--sidebar-pill-bet);}
+    .sidebar-slot-corner-label.payout  { bottom: 8px; left: 8px; background: var(--sidebar-pill-payout);}
+    .sidebar-slot-corner-label.xwin    { bottom: 8px; right: 8px; background: var(--sidebar-pill-xwin);}
+    .sidebar-section.discord {
+      background: var(--sidebar-pill-bg) !important;
+      border: 2px solid var(--sidebar-border) !important;
+      box-shadow: 0 2px 16px #3ec6ff33 !important;
+    }
+    #discordOffersEditable {
+      background: var(--sidebar-card-bg) !important;
+      border-radius: 10px !important;
+      border: 1.5px solid var(--sidebar-border) !important;
+      color: #b6eaff !important;
+      font-size: 1.08em !important;
+      padding: 12px 14px !important;
+      box-shadow: 0 2px 12px #3ec6ff22 !important;
+      transition: border 0.2s, box-shadow 0.2s !important;
+        max-width: 260px !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        font-size: 0.78em !important;
+        min-height: 32px !important;
+        max-height: 38px !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+    }
+    #discordOffersEditable:focus {
+      border: 2px solid #5ce1e6 !important;
+      box-shadow: 0 0 8px #5ce1e6cc !important;
+    }
+    #discordOffersEditable .sidebar-label {
+      color: var(--sidebar-label-bg) !important;
+      font-weight: bold !important;
+      font-size: 1.08em !important;
+      letter-spacing: 1px !important;
+      margin-bottom: 6px !important;
+      display: inline-block !important;
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    #discordOffersEditable .sidebar-discord-text {
+      color: #fff !important;
+      font-size: 1em !important;
+      margin-top: 6px !important;
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      text-shadow: 0 1px 6px #0ff2 !important;
+    }
+    /* Sidebar Color Settings Card */
+    .sidebar-color-settings {
+      margin-bottom: 18px;
+      background: var(--sidebar-card-bg);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 12px #3ec6ff33;
+      border: 1.5px solid var(--sidebar-border);
+      max-width: 340px;
+      min-width: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .sidebar-color-settings label {
+      font-size: 0.98em;
+      color: var(--sidebar-label-bg);
+      font-weight: 600;
+      gap: 6px;
+      display: flex;
+      align-items: center;
+    }
+    .sidebar-color-settings input[type="color"] {
+      border: none;
+      background: none;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      margin: 0 2px;
+      cursor: pointer;
+    }
+    .sidebar-color-settings button {
+      margin-top: 8px;
+      width: 100%;
+      font-size: 1em;
+      padding: 6px 0;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      box-shadow: 0 2px 8px #3ec6ff33;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .sidebar-color-settings button:hover {
+      background: linear-gradient(90deg, #5ce1e6 0%, #3ec6ff 100%);
+    }
+    /* --- Compact Sidebar Cards --- */
+/* --- Extra Compact Sidebar Cards --- */
+.sidebar-section.target,
+.sidebar-section.avg-be,
+.sidebar-section.profit {
+  padding: 4px 6px !important;
+  margin-bottom: 6px !important;
+  min-height: unset !important;
 }
 
-.sidebar-bonus-carousel-frame {
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-  position: relative;
+.sidebar-label {
+  font-size: 0.85em !important;
+  margin-bottom: 1px !important;
+  padding: 1px 4px !important;
 }
-.sidebar-bonus-carousel-track {
-  display: flex;
-  flex-direction: column;
-  will-change: transform;
+
+.sidebar-value {
+  font-size: 0.92em !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
 }
-body.obs-mode .container,
-body.obs-mode h1,
-body.obs-mode .stats-and-display,
-body.obs-mode #slotDisplay,
-body.obs-mode footer {
-  display: none !important;
+
+.sidebar-row {
+  gap: 3px !important;
 }
-body.obs-mode .sidebar {
-  display: flex !important;
+
+.sidebar-box {
+  padding: 2px 0 !important;
 }
-body.obs-mode #obsModeBtn {
-  display: block !important;
+
+.sidebar-progress {
+  height: 5px !important;
+  margin-top: 1px !important;
+}
+
+.sidebar-progress-text {
+  font-size: 0.78em !important;
+  top: -15px !important;
 }
   </style>
 </head>
 <body>
+<div class="top-buttons">
+  <button id="homeBtn">🏠 Home</button>
   <button id="obsModeBtn">OBS Mode</button>
+</div>
   <div class="container">
     <h1>Bonus Hunt Tracker</h1>
     <div>
@@ -641,6 +804,22 @@ body.obs-mode #obsModeBtn {
             <input type="checkbox" id="slotSuperBonus" style="margin-right:6px;" /> Super Bonus
           </label>
           <button onclick="addSlot()">Add Slot</button>
+        </div>
+        <!-- Sidebar Color Settings Card -->
+        <div class="sidebar-color-settings sidebar-section">
+          <div class="sidebar-label" style="margin-bottom:10px;">🎨 Sidebar Color Settings</div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <label>BG <input type="color" id="sidebarBgColor" /></label>
+            <label>Border <input type="color" id="sidebarBorderColor" /></label>
+            <label>Card <input type="color" id="sidebarCardColor" /></label>
+            <label>Label <input type="color" id="sidebarLabelColor" /></label>
+            <label>Pill <input type="color" id="sidebarPillColor" /></label>
+          </div>
+          <label style="width:100%;">
+            Banner Image URL
+            <input type="url" id="sidebarBannerUrl" placeholder="https://..." style="width:100%;margin-top:4px;" />
+          </label>
+          <button id="resetSidebarColors">Reset Colors</button>
         </div>
         <div class="slideshow">
           <img id="slotPreview" src="" alt="Slot Preview" />
@@ -662,14 +841,16 @@ body.obs-mode #obsModeBtn {
       <div class="slot-display" id="slotDisplay"></div>
     </div>
   </div>
-  <div id="sidebar" class="sidebar">
-    <div class="sidebar-section header">
-      <div class="sidebar-title">Bonus Hunt/Opening <span id="huntNumber">#1</span></div>
+ <div id="sidebar" class="sidebar">
+  <div class="sidebar-section header" style="display: flex; align-items: center; gap: 12px;">
+    <div id="huntTitleEditable" class="sidebar-title" contenteditable="true" spellcheck="false" style="outline:none;">
+      Bonus Hunt/Opening <span id="huntNumber">#1</span>
     </div>
-    <div class="sidebar-section target">
-      <div class="sidebar-label">🎯 Target</div>
-      <div class="sidebar-value" id="sidebarTarget">0€</div>
-    </div>
+  </div>
+  <div class="sidebar-section target">
+    <div class="sidebar-label">🎯 Target</div>
+    <div class="sidebar-value" id="sidebarTarget">0€</div>
+  </div>
     <div class="sidebar-section avg-be">
       <div class="sidebar-row">
         <div class="sidebar-box">
@@ -679,10 +860,6 @@ body.obs-mode #obsModeBtn {
         <div class="sidebar-box">
           <div class="sidebar-label">BE</div>
           <div class="sidebar-value" id="sidebarBE">0x</div>
-        </div>
-        <div class="sidebar-box">
-          <div class="sidebar-label">Init. BE</div>
-          <div class="sidebar-value" id="sidebarInitBE">0x</div>
         </div>
       </div>
     </div>
@@ -705,16 +882,85 @@ body.obs-mode #obsModeBtn {
         <div id="sidebarBonusList" class="sidebar-bonus-carousel-track"></div>
       </div>
     </div>
-    <div class="sidebar-section discord">
-      <div class="sidebar-label">🎁 Discord Offers</div>
+  <div class="sidebar-section discord">
+    <div id="sidebarBannerImageContainer" style="width:100%;text-align:center;margin-bottom:10px;display:none;">
+      <img id="sidebarBannerImage" src="" alt="Banner" style="max-width:100%;max-height:200px;border-radius:8px;box-shadow:0 2px 8px #3ec6ff33;">
+    </div>
+    <div id="discordOffersEditable" contenteditable="true" spellcheck="false" style="min-height:48px;outline:none;">
+      <span class="sidebar-label">🎁 Discord Offers</span>
       <div class="sidebar-discord-text">
         Junta-te ao nosso Discord para estares a par das nossas ofertas exclusivas!
       </div>
     </div>
   </div>
+  <div style="text-align:center; color:#3ec6ff; font-size:0.98em; margin:18px 0 8px 0; opacity:0.85;">
+    &copy; <a href="https://twitch.tv/osecaadegas95" target="_blank" style="color:#3ec6ff;text-decoration:none;">twitch.tv/osecaadegas95</a>. For public use, just want the credit for it.
+  </div>
+</div>
+</div>
   <script>
+    // Sidebar color customization
+    const defaultSidebarColors = {
+      bg: '#232e4d',
+      border: '#3ec6ff',
+      card: '#232e4d',
+      label: '#3ec6ff',
+      pill: '#181f36'
+    };
+
+    function setSidebarColors(colors) {
+      document.documentElement.style.setProperty('--sidebar-bg', `linear-gradient(135deg, ${colors.card} 80%, ${colors.bg} 100%)`);
+      document.documentElement.style.setProperty('--sidebar-border', colors.border);
+      document.documentElement.style.setProperty('--sidebar-card-bg', colors.card);
+      document.documentElement.style.setProperty('--sidebar-label-bg', colors.label);
+      document.documentElement.style.setProperty('--sidebar-label-color', '#fff');
+      document.documentElement.style.setProperty('--sidebar-pill-bg', colors.pill);
+      // Update gradients for pills
+      document.documentElement.style.setProperty('--sidebar-pill-bet', `linear-gradient(90deg, ${colors.label}cc 0%, #5ce1e6cc 100%)`);
+      document.documentElement.style.setProperty('--sidebar-pill-payout', `linear-gradient(90deg, #5ce1e6cc 0%, ${colors.label}cc 100%)`);
+      document.documentElement.style.setProperty('--sidebar-pill-xwin', `linear-gradient(90deg, ${colors.label}cc 0%, #5ce1e6cc 100%)`);
+      document.documentElement.style.setProperty('--sidebar-progress-bar', 'linear-gradient(90deg, #3ec6ff 0%, #5ce1e6 100%)');
+    }
+
+    function loadSidebarColors() {
+      const saved = JSON.parse(localStorage.getItem('sidebarColors') || 'null');
+      const colors = saved || defaultSidebarColors;
+      setSidebarColors(colors);
+      document.getElementById('sidebarBgColor').value = colors.bg;
+      document.getElementById('sidebarBorderColor').value = colors.border;
+      document.getElementById('sidebarCardColor').value = colors.card;
+      document.getElementById('sidebarLabelColor').value = colors.label;
+      document.getElementById('sidebarPillColor').value = colors.pill;
+    }
+
+    function saveSidebarColors() {
+      const colors = {
+        bg: document.getElementById('sidebarBgColor').value,
+        border: document.getElementById('sidebarBorderColor').value,
+        card: document.getElementById('sidebarCardColor').value,
+        label: document.getElementById('sidebarLabelColor').value,
+        pill: document.getElementById('sidebarPillColor').value
+      };
+      localStorage.setItem('sidebarColors', JSON.stringify(colors));
+      setSidebarColors(colors);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSidebarColors();
+      ['sidebarBgColor','sidebarBorderColor','sidebarCardColor','sidebarLabelColor','sidebarPillColor'].forEach(id => {
+        document.getElementById(id).addEventListener('input', saveSidebarColors);
+      });
+      document.getElementById('resetSidebarColors').addEventListener('click', () => {
+        localStorage.removeItem('sidebarColors');
+        loadSidebarColors();
+      });
+    });
+
+    // --- Main App Logic ---
     const slots = [];
     let displayIndex = 0;
+    let carouselIndex = 0;
+    let carouselInterval = null;
 
     function addSlot() {
       const name = document.getElementById('slotName').value;
@@ -726,7 +972,6 @@ body.obs-mode #obsModeBtn {
       slots.push(slot);
       updateTable();
       updateSidebar();
-      // Clear input fields for next entry
       document.getElementById('slotName').value = '';
       document.getElementById('slotImage').value = '';
       document.getElementById('slotBet').value = '';
@@ -810,10 +1055,8 @@ body.obs-mode #obsModeBtn {
       const starting = parseFloat(document.getElementById('startingMoney').value) || 0;
       const finishing = parseFloat(document.getElementById('finishingMoney').value) || 0;
       const totalBonuses = slots.length;
-      const totalBet = slots.reduce((sum, s) => sum + (s.bet * (s.superBonus ? 200 : 100)), 0);
-      const costPerBonus = totalBonuses > 0 ? (totalBet / totalBonuses).toFixed(2) : 0;
       const totalPayout = slots.reduce((sum, s) => sum + (s.payout || 0), 0);
-      const averageBet = totalBonuses > 0 ? (totalBet / totalBonuses) : 0;
+      const averageBet = totalBonuses > 0 ? (slots.reduce((sum, s) => sum + (s.bet * (s.superBonus ? 200 : 100)), 0) / totalBonuses) : 0;
       const spent = starting - finishing;
       const toBreakEven = Math.max(0, spent - totalPayout);
       const xToBreakEven = averageBet > 0 ? (toBreakEven / averageBet).toFixed(2) : 'N/A';
@@ -822,8 +1065,6 @@ body.obs-mode #obsModeBtn {
       const statsDiv = document.getElementById('stats');
       statsDiv.innerHTML = `
         <p>Total Bonuses: ${totalBonuses}</p>
-        <p>Total Bet Cost: €${totalBet.toFixed(2)}</p>
-        <p>Cost per Bonus: €${costPerBonus}</p>
         <p><strong>Average Bet Size: €${averageBet.toFixed(2)}</strong></p>
         <p>Total Return: €${totalPayout.toFixed(2)}</p>
         <p>
@@ -837,13 +1078,63 @@ body.obs-mode #obsModeBtn {
       `;
     }
 
+    function startBonusCarousel() {
+      const track = document.getElementById('sidebarBonusList');
+      const cards = track.querySelectorAll('.sidebar-bonus-list-card');
+      if (cards.length <= 4) {
+        track.style.transform = 'translateY(0)';
+        if (carouselInterval) clearInterval(carouselInterval);
+        return;
+      }
+      const cardHeight = cards[0].offsetHeight + 8;
+      const visibleCount = 4;
+      const maxIndex = cards.length - visibleCount;
+
+      if (carouselInterval) clearInterval(carouselInterval);
+
+      carouselIndex = 0;
+      let direction = 1;
+      track.style.transition = 'transform 0.7s cubic-bezier(.77,0,.18,1)';
+      track.style.transform = `translateY(0)`;
+
+      function scrollStep() {
+        if (direction === 1) {
+          if (carouselIndex < maxIndex) {
+            carouselIndex++;
+          } else {
+            setTimeout(() => {
+              direction = -1;
+              carouselInterval = setInterval(scrollStep, 2500);
+            }, 1200);
+            clearInterval(carouselInterval);
+            return;
+          }
+        } else {
+          if (carouselIndex > 0) {
+            carouselIndex--;
+          } else {
+            setTimeout(() => {
+              direction = 1;
+              carouselInterval = setInterval(scrollStep, 2500);
+            }, 1200);
+            clearInterval(carouselInterval);
+            return;
+          }
+        }
+        track.style.transition = 'transform 0.7s cubic-bezier(.77,0,.18,1)';
+        track.style.transform = `translateY(-${carouselIndex * cardHeight}px)`;
+      }
+
+      carouselInterval = setInterval(scrollStep, 2500);
+    }
+
     function renderBonusCarousel() {
       const track = document.getElementById('sidebarBonusList');
       let html = '';
       slots.forEach((slot) => {
         const xWin = slot.bet > 0 ? (slot.payout / slot.bet).toFixed(2) : "0.00";
         html += `
-          <div class="sidebar-bonus-list-card">
+          <div class="sidebar-bonus-list-card${slot.superBonus ? ' super-bonus' : ''}">
             <img class="sidebar-bonus-img-large" src="${slot.image}" alt="${slot.name}" />
             <div class="sidebar-bonus-info-large">
               <div class="sidebar-bonus-row">
@@ -856,6 +1147,8 @@ body.obs-mode #obsModeBtn {
         `;
       });
       track.innerHTML = html;
+      carouselIndex = 0;
+      startBonusCarousel();
     }
 
     function updateSidebar() {
@@ -869,10 +1162,9 @@ body.obs-mode #obsModeBtn {
       const profitLoss = totalPayout - spent;
       const breakEvenX = averageBet > 0 ? ((spent - totalPayout) / averageBet).toFixed(2) : 'N/A';
 
-      document.getElementById('sidebarTarget').textContent = finishing ? finishing.toFixed(2) + "€" : "0€";
+      document.getElementById('sidebarTarget').textContent = starting ? starting.toFixed(2) + "€" : "0€";
       document.getElementById('sidebarAvg').textContent = averageBet ? (totalPayout / totalBet * 100).toFixed(0) + "x" : "0x";
       document.getElementById('sidebarBE').textContent = breakEvenX + "x";
-      document.getElementById('sidebarInitBE').textContent = averageBet ? (spent / averageBet).toFixed(0) + "x" : "0x";
       document.getElementById('sidebarProfit').textContent = (profitLoss >= 0 ? "+" : "") + profitLoss.toFixed(2) + "€";
       const progress = totalBonuses > 0 ? (slots.filter(s => s.payout > 0).length / totalBonuses) * 100 : 0;
       document.getElementById('sidebarProgressBar').style.width = progress + "%";
@@ -884,28 +1176,30 @@ body.obs-mode #obsModeBtn {
         bestSlot = slots.reduce((max, s) => (s.payout > (max?.payout ?? -Infinity) ? s : max), null);
         worstSlot = slots.reduce((min, s) => (s.payout < (min?.payout ?? Infinity) ? s : min), null);
       }
-      document.getElementById('sidebarBestSlot').innerHTML = bestSlot ? `
-        <div class="sidebar-slot-card best">
-          <img class="sidebar-slot-img" src="${bestSlot.image}" alt="${bestSlot.name}" />
-          <div class="sidebar-slot-info">
-            <div class="sidebar-slot-name">${bestSlot.name}</div>
-            <div class="sidebar-slot-bet">Bet: €${bestSlot.bet.toFixed(2)}</div>
-            <div class="sidebar-slot-payout">€${bestSlot.payout.toFixed(2)}</div>
-            <div class="sidebar-slot-x">${bestSlot.bet > 0 ? (bestSlot.payout / bestSlot.bet).toFixed(2) + "x" : ""}</div>
+      document.getElementById('sidebarBestSlot').innerHTML = '';
+      document.getElementById('sidebarWorstSlot').innerHTML = '';
+      if (bestSlot || worstSlot) {
+        document.getElementById('sidebarBestSlot').innerHTML = `
+          <div class="sidebar-best-worst-row">
+            ${bestSlot ? `
+            <div class="sidebar-slot-card-large best">
+              <img class="sidebar-slot-img-large" src="${bestSlot.image}" alt="${bestSlot.name}" />
+              <div class="sidebar-slot-corner-label bet">Bet: €${bestSlot.bet.toFixed(2)}</div>
+              <div class="sidebar-slot-corner-label payout">€${bestSlot.payout.toFixed(2)}</div>
+              <div class="sidebar-slot-corner-label xwin">${bestSlot.bet > 0 ? (bestSlot.payout / bestSlot.bet).toFixed(2) + "x" : ""}</div>
+            </div>
+            ` : ''}
+            ${worstSlot ? `
+            <div class="sidebar-slot-card-large worst">
+              <img class="sidebar-slot-img-large" src="${worstSlot.image}" alt="${worstSlot.name}" />
+              <div class="sidebar-slot-corner-label bet">Bet: €${worstSlot.bet.toFixed(2)}</div>
+              <div class="sidebar-slot-corner-label payout">€${worstSlot.payout.toFixed(2)}</div>
+              <div class="sidebar-slot-corner-label xwin">${worstSlot.bet > 0 ? (worstSlot.payout / worstSlot.bet).toFixed(2) + "x" : ""}</div>
+            </div>
+            ` : ''}
           </div>
-        </div>
-      ` : '';
-      document.getElementById('sidebarWorstSlot').innerHTML = worstSlot ? `
-        <div class="sidebar-slot-card worst">
-          <img class="sidebar-slot-img" src="${worstSlot.image}" alt="${worstSlot.name}" />
-          <div class="sidebar-slot-info">
-            <div class="sidebar-slot-name">${worstSlot.name}</div>
-            <div class="sidebar-slot-bet">Bet: €${worstSlot.bet.toFixed(2)}</div>
-            <div class="sidebar-slot-payout">€${worstSlot.payout.toFixed(2)}</div>
-            <div class="sidebar-slot-x">${worstSlot.bet > 0 ? (worstSlot.payout / worstSlot.bet).toFixed(2) + "x" : ""}</div>
-          </div>
-        </div>
-      ` : '';
+        `;
+      }
 
       renderBonusCarousel();
     }
@@ -926,6 +1220,79 @@ body.obs-mode #obsModeBtn {
     document.getElementById('obsModeBtn').addEventListener('click', function() {
       document.body.classList.toggle('obs-mode');
     });
+    document.getElementById('homeBtn').addEventListener('click', function() {
+      window.location.href = 'https://osecaadegas.github.io/95/';
+    });
+
+    // Discord Offers editable section persistence
+    const discordOffersEditable = document.getElementById('discordOffersEditable');
+    const DISCORD_OFFERS_KEY = 'discordOffersSection';
+
+    function loadDiscordOffersSection() {
+      const saved = localStorage.getItem(DISCORD_OFFERS_KEY);
+      if (saved !== null) {
+        discordOffersEditable.innerHTML = saved;
+      }
+    }
+    discordOffersEditable.addEventListener('input', () => {
+      // Limit to 32 characters (plain text)
+      let text = discordOffersEditable.innerText;
+      if (text.length > 32) {
+        discordOffersEditable.innerText = text.slice(0, 32);
+        // Move cursor to end
+        const range = document.createRange();
+        const sel = window.getSelection();
+        range.selectNodeContents(discordOffersEditable);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      localStorage.setItem(DISCORD_OFFERS_KEY, discordOffersEditable.innerHTML);
+    });
+    document.addEventListener('DOMContentLoaded', loadDiscordOffersSection);
+
+    // Hunt Title editable section persistence
+    const huntTitleEditable = document.getElementById('huntTitleEditable');
+    const HUNT_TITLE_KEY = 'huntTitleEditable';
+
+    function loadHuntTitle() {
+      const saved = localStorage.getItem(HUNT_TITLE_KEY);
+      if (saved !== null) {
+        huntTitleEditable.innerHTML = saved;
+      }
+    }
+    huntTitleEditable.addEventListener('input', () => {
+      localStorage.setItem(HUNT_TITLE_KEY, huntTitleEditable.innerHTML);
+    });
+    document.addEventListener('DOMContentLoaded', loadHuntTitle);
+
+    // Banner image logic
+    const BANNER_URL_KEY = 'sidebarBannerUrl';
+
+function loadSidebarBanner() {
+  const url = localStorage.getItem(BANNER_URL_KEY) || '';
+  document.getElementById('sidebarBannerUrl').value = url;
+  const img = document.getElementById('sidebarBannerImage');
+  const container = document.getElementById('sidebarBannerImageContainer');
+  if (url) {
+    img.src = url;
+    container.style.display = '';
+  } else {
+    img.src = '';
+    container.style.display = 'none';
+  }
+}
+
+function saveSidebarBanner() {
+  const url = document.getElementById('sidebarBannerUrl').value.trim();
+  localStorage.setItem(BANNER_URL_KEY, url);
+  loadSidebarBanner();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadSidebarBanner();
+  document.getElementById('sidebarBannerUrl').addEventListener('input', saveSidebarBanner);
+});
   </script>
 </body>
 <footer style="width:100%;text-align:center;padding:18px 0 12px 0;color:#a259ff;font-size:1em;letter-spacing:1px;opacity:0.85;">
